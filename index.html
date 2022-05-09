@@ -2,78 +2,131 @@
 <html>
 
 <head>
-  <title>Purrinha</title>
+  <title>Avatar</title>
+
+  <style type="text/css">
+    #circles {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 130px;
+    }
+
+    .circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin-top: 10px;
+      margin-right: 50px;
+    }
+
+    button {
+      margin-right: 10px;
+    }
+
+    .circle.red {
+      background-color: red;
+    }
+
+    .circle.blue {
+      background-color: blue;
+    }
+
+    .circle.yellow {
+      background-color: yellow;
+    }
+
+    .circle.green {
+      background-color: green;
+    }
+
+  </style>
+
+
+  <script type="text/javascript">
+    var lastId = 0;
+
+    const circlesIds = [];
+
+    const colors = [
+      'red',
+      'blue',
+      'yellow',
+      'green',
+    ];
+
+    const getCircleColor = () => colors[circlesIds.length % colors.length];
+
+    const createCircle = () => {
+      let circle = document.createElement('div');
+      let circleId = ++lastId;
+
+      circle.setAttribute('class', `circle ${getCircleColor()}`);
+      circle.setAttribute('id', `circle-${circleId}`);
+
+
+      circlesIds.push(lastId);
+
+      circle.innerText = lastId;
+
+      document.getElementById(`circles`).appendChild(circle);
+
+      circle.onclick = () => {
+        circlesIds.splice(circlesIds.indexOf(circleId), 1);
+        circle.remove();
+      };
+    };
+
+    const removeFirstCircle = () => {
+      if(circlesIds.length === 0) return null;
+
+      let firstCircleId = circlesIds.shift();
+
+      document.getElementById(`circle-${firstCircleId}`).remove();
+    };
+
+    const removeLastCircle = () => {
+      if(circlesIds.length === 0) return null;
+
+      let lastCircleId = circlesIds.pop();
+
+      document.getElementById(`circle-${lastCircleId}`).remove();
+    };
+
+    const initializeButton = (action) => {
+      let button = document.createElement('button');
+      button.setAttribute('onClick', `${action}()`);
+      button.innerText = action;
+
+      return button;
+    };
+
+    const initializeCirclesDiv = () => {
+      const circles = document.createElement('p');
+      circles.setAttribute('id', `circles`);
+      return circles;
+    };
+
+    const initializeActionsDiv = () => {
+      const actions = document.createElement('p');
+      actions.appendChild(initializeButton('removeFirstCircle'));
+      actions.appendChild(initializeButton('removeLastCircle'));
+      actions.appendChild(initializeButton('createCircle'));
+
+      actions.setAttribute('id', `actions`);
+
+      return actions;
+    };
+
+    window.onload = () => {
+      const body = document.getElementsByTagName('body')[0];
+
+      body.appendChild(initializeActionsDiv());
+      body.appendChild(initializeCirclesDiv());
+    };
+  </script>
 </head>
 
 <body>
-  <h1>Purrinha</h1>
-  <p>O melhor jogo já criado</p>
-  <article>
-    <section>
-      <h2>De verdade, o que mais você precisaria?</h2>
-      <p>
-        Você provavelmente demora horas aprendendo a jogar um jogo, sendo derrotado por crianças de 7 anos, tentando
-        convencer seus amigos a jogar, tendo que ensiná-los como se joga, e provavelmente vai precisar deixar alguém de
-        fora pois ultrapassou a quantidade máxima de jogadores. Deixe-me mostrar o motivo de purrinha ser o melhor jogo:
-      </p>
-      <ul>
-        <li>É simples e todos conseguem aprender rapidamente</li>
-        <li>Pode ser jogado por uma quantidade quase ilimitada de jogadores</li>
-        <li>É patrimônio cultural brasileiro</li>
-        <li>É o jogo oficial dos bares e botecos do Brasil</li>
-        <li>Possui campeonatos oficiais</li>
-      </ul>
-    </section>
-    <hr>
-    <section>
-      <h3>Bem, mas eu nunca ouvi falar desse jogo.</h3>
-      <p>Você provavelmente só conhece lol e nunca foi num bar, mas por sorte aqui vem uma breve
-        explicação:</p>
-      <p>
-        Cada jogador deve colocar 3 palitos na mão. No início de cada rodada cada jogador decide se coloca 0, 1, 2 ou 3
-        palitos em uma das suas mãos e então a estende para iniciar a rodada.
-      </p>
-      <p>
-        Após todos os jogadores estenderem sua mão, cada um dos jogadores fala, em sentido horário, um palite de um
-        número
-        que pensa ser o total de palitos colocados pelos jogadores, mas os palpites não podem se repetir, então se
-        alguém já falou 7 como palpite, os próximos terão que escolher outro número.
-      </p>
-      <figure>
-        <img src="purrinha.webp" style="width: 400px" alt="Pessoas jogando purrinha">
-      </figure>
-    </section>
-    <hr>
-    <section>
-      <h3>Existem campeonatos?</h3>
-      <p>Você sonhou em ser jogador profissional de lol, mas sabe que nunca conseguirá pois está sempre perdendo para
-        crianças com menos de 10 anos. Na purrinha você não precisa se preocupar, os jogadores competitivos geralmente
-        tem mais de 60.
-      </p>
-      <p>Os campeonatos ocorrem praticamente todo ano, então alguma hora você consegue participar.</p>
-      <p>
-        Para saber se ocorrerá um campeonato, é só comparecer no Bar do Cristiano no Guarabu, Ilha do Governador, Rio de
-        Janeiro. O <a
-          href="https://diariodorio.com/campeonato-de-purrinha-acontece-neste-sabado-na-ilha-do-governador/">último
-          campeonato do Bar do Cristiano</a> ocorreu no dia 18/12/2021.
-      </p>
-      <figure>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/70FnAPeun7g" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        <img src="Purrinhodromo.jpg" style="width: 400px; float: right;" alt="Pessoas começando a jogar purrinha">
-      </figure>
-    </section>
-    <hr>
-    <section>
-      <h3>Ainda não se convenceu?</h3>
-      <p>
-        Se você ainda não está convencido que deve começar a jogar purrinha, saiba, o ganhador do campeonato de
-        2021 foi premiado com um troféu e uma dobradinha.
-      </p>
-    </section>
-  </article>
 </body>
 
 </html>
