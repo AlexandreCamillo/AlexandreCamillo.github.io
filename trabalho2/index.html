@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Avatar</title>
+
+  <style type="text/css">
+    #circles {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 130px;
+    }
+
+    .circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin-top: 10px;
+      margin-right: 50px;
+    }
+
+    button {
+      margin-right: 10px;
+    }
+
+    .circle.red {
+      background-color: red;
+    }
+
+    .circle.blue {
+      background-color: blue;
+    }
+
+    .circle.yellow {
+      background-color: yellow;
+    }
+
+    .circle.green {
+      background-color: green;
+    }
+
+  </style>
+
+
+  <script type="text/javascript">
+    var lastId = 0;
+
+    const circlesIds = [];
+
+    const colors = [
+      'red',
+      'blue',
+      'yellow',
+      'green',
+    ];
+
+    const getCircleColor = () => colors[circlesIds.length % colors.length];
+
+    const createCircle = () => {
+      let circle = document.createElement('div');
+      let circleId = ++lastId;
+
+      circle.setAttribute('class', `circle ${getCircleColor()}`);
+      circle.setAttribute('id', `circle-${circleId}`);
+
+
+      circlesIds.push(lastId);
+
+      circle.innerText = lastId;
+
+      document.getElementById(`circles`).appendChild(circle);
+
+      circle.onclick = () => {
+        circlesIds.splice(circlesIds.indexOf(circleId), 1);
+        circle.remove();
+      };
+    };
+
+    const removeFirstCircle = () => {
+      if(circlesIds.length === 0) return null;
+
+      let firstCircleId = circlesIds.shift();
+
+      document.getElementById(`circle-${firstCircleId}`).remove();
+    };
+
+    const removeLastCircle = () => {
+      if(circlesIds.length === 0) return null;
+
+      let lastCircleId = circlesIds.pop();
+
+      document.getElementById(`circle-${lastCircleId}`).remove();
+    };
+
+    const initializeButton = (action) => {
+      let button = document.createElement('button');
+      button.setAttribute('onClick', `${action}()`);
+      button.innerText = action;
+
+      return button;
+    };
+
+    const initializeCirclesDiv = () => {
+      const circles = document.createElement('p');
+      circles.setAttribute('id', `circles`);
+      return circles;
+    };
+
+    const initializeActionsDiv = () => {
+      const actions = document.createElement('p');
+      actions.appendChild(initializeButton('removeFirstCircle'));
+      actions.appendChild(initializeButton('removeLastCircle'));
+      actions.appendChild(initializeButton('createCircle'));
+
+      actions.setAttribute('id', `actions`);
+
+      return actions;
+    };
+
+    window.onload = () => {
+      const body = document.getElementsByTagName('body')[0];
+
+      body.appendChild(initializeActionsDiv());
+      body.appendChild(initializeCirclesDiv());
+    };
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
