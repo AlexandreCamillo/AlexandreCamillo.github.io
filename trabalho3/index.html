@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Desenho procedural em SVG</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  </script>
+  <script>
+    var sPositions = localStorage.positions || "{}";
+    positions = JSON.parse(sPositions);
+
+    $( function() {
+      $( "#observablehq-desenho-0c8521f7" ).draggable({
+        stop: function (event, ui) {
+          positions[this.id] = ui.position
+          localStorage.positions = JSON.stringify(positions)
+        }
+      });
+      $( "#draggable-console" ).draggable({
+        stop: function (event, ui) {
+          positions[this.id] = ui.position
+          localStorage.positions = JSON.stringify(positions)
+        }
+      });
+    });
+
+    $.each(positions, function (id, pos) {
+      console.log($("#" + id).css(pos))
+    })
+  </script>
+</head>
+
+<body>
+  <h1>Desenho procedural em SVG</h1>
+  <div id="observablehq-desenho-0c8521f7"></div>
+  <div id="draggable-console">
+    <div id="observablehq-viewof-ratio-0c8521f7"></div>
+    <div id="observablehq-viewof-n-0c8521f7"></div>
+    <div id="observablehq-viewof-variation-0c8521f7"></div>
+  </div>
+
+  <p>Credit: <a href="https://observablehq.com/d/8fb3f8706b458818">Square Progression - SVG version (incomplete) by Claudio Esperança</a></p>
+  
+  <script type="module">
+    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+    import define from "https://api.observablehq.com/d/8fb3f8706b458818.js?v=3";
+    new Runtime().module(define, name => {
+      if (name === "viewof ratio") return new Inspector(document.querySelector("#observablehq-viewof-ratio-0c8521f7"));
+      if (name === "desenho") return new Inspector(document.querySelector("#observablehq-desenho-0c8521f7"));
+      if (name === "viewof n") return new Inspector(document.querySelector("#observablehq-viewof-n-0c8521f7"));
+      if (name === "viewof variation") return new Inspector(document.querySelector("#observablehq-viewof-variation-0c8521f7"));
+      return ["draw"].includes(name);
+    });
+
+    var sPositions = localStorage.positions || "{}";
+    positions = JSON.parse(sPositions);
+
+    $.each(positions, function (id, pos) {
+      $("#" + id).css(pos)
+    })
+  </script>
+  </script>
+</body>
+
+</html>
