@@ -9,7 +9,7 @@
   </script>
   <script>
     var sPositions = localStorage.positions || "{}";
-    positions = JSON.parse(sPositions);
+    var positions = JSON.parse(sPositions);
 
     $( function() {
       $( "#observablehq-desenho-0c8521f7" ).draggable({
@@ -25,10 +25,6 @@
         }
       });
     });
-
-    $.each(positions, function (id, pos) {
-      console.log($("#" + id).css(pos))
-    })
   </script>
 </head>
 
@@ -54,7 +50,7 @@
       return ["draw"].includes(name);
     });
 
-    var sPositions = localStorage.positions || "{}";
+    sPositions = localStorage.positions || "{}";
     positions = JSON.parse(sPositions);
 
     $.each(positions, function (id, pos) {
