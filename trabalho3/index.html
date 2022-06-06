@@ -11,14 +11,14 @@
     var sPositions = localStorage.positions || "{}";
     var positions = JSON.parse(sPositions);
 
-    $( function() {
-      $( "#observablehq-desenho-0c8521f7" ).draggable({
+    $(function () {
+      $("#desenho").draggable({
         stop: function (event, ui) {
           positions[this.id] = ui.position
           localStorage.positions = JSON.stringify(positions)
         }
       });
-      $( "#draggable-console" ).draggable({
+      $("#draggable-console").draggable({
         stop: function (event, ui) {
           positions[this.id] = ui.position
           localStorage.positions = JSON.stringify(positions)
@@ -30,23 +30,88 @@
 
 <body>
   <h1>Desenho procedural em SVG</h1>
-  <div id="observablehq-desenho-0c8521f7"></div>
+  <div id="desenho"></div>
   <div id="draggable-console">
-    <div id="observablehq-viewof-ratio-0c8521f7"></div>
-    <div id="observablehq-viewof-n-0c8521f7"></div>
-    <div id="observablehq-viewof-variation-0c8521f7"></div>
+    <div id="ratio"></div>
+    <div id="n"></div>
+    <div id="variation"></div>
   </div>
 
-  <p>Credit: <a href="https://observablehq.com/d/8fb3f8706b458818">Square Progression - SVG version (incomplete) by Claudio Esperança</a></p>
-  
+  <p>Credit: <a href="https://observablehq.com/d/8fb3f8706b458818">Square Progression - SVG version (incomplete) by
+      Claudio Esperança</a></p>
+
   <script type="module">
-    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-    import define from "https://api.observablehq.com/d/8fb3f8706b458818.js?v=3";
+    import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+
+    function _1(md) {
+      return (
+        md`# Square Progression - SVG version (incomplete)`
+      )
+    }
+
+    function _desenho(htl) {
+      return (
+        htl.html`<svg width=800 height=600 style="border:1px solid gray">`
+      )
+    }
+
+    function _ratio(Inputs) {
+      return (
+        Inputs.range([0, 1], { label: "Ratio", value: 0.5, step: 0.01 })
+      )
+    }
+
+    function _n(Inputs) {
+      return (
+        Inputs.range([0, 30], { label: "N", value: 2, step: 1 })
+      )
+    }
+
+    function _variation(Inputs) {
+      return (
+        Inputs.radio([0, 1, 2, 3], { label: "Variation", value: 0 })
+      )
+    }
+
+    function _draw(desenho, n, ratio, svg, variation) {
+      const [width, height] = [800, 600];
+      desenho.innerHTML = "";
+
+      let p = [width / 2, height / 2];
+      let side = width / 10;
+
+      const colors = ["red", "yellow", "blue", "green"];
+      for (let i = 0; i < n; i++) {
+        let color = colors[i % colors.length];
+
+        let x = i * 10 + width / 2;
+        let y = i * 10 + height / 2;
+        let size = side * (1 + ratio) ** i;
+
+        let sq = svg`<rect fill=${color} x=${x} y=${y} width=${size} height=${size} opacity=0.7 />`;
+        desenho.append(sq);
+      }
+    }
+
+    function define(runtime, observer) {
+      const main = runtime.module();
+      main.variable(observer()).define(["md"], _1);
+      main.variable(observer("desenho")).define("desenho", ["htl"], _desenho);
+      main.variable(observer("viewof ratio")).define("viewof ratio", ["Inputs"], _ratio);
+      main.variable(observer("ratio")).define("ratio", ["Generators", "viewof ratio"], (G, _) => G.input(_));
+      main.variable(observer("viewof n")).define("viewof n", ["Inputs"], _n);
+      main.variable(observer("n")).define("n", ["Generators", "viewof n"], (G, _) => G.input(_));
+      main.variable(observer("viewof variation")).define("viewof variation", ["Inputs"], _variation);
+      main.variable(observer("variation")).define("variation", ["Generators", "viewof variation"], (G, _) => G.input(_));
+      main.variable(observer("draw")).define("draw", ["desenho","n","ratio","svg", "variation"], _draw);
+      return main;
+    }
+
     new Runtime().module(define, name => {
-      if (name === "viewof ratio") return new Inspector(document.querySelector("#observablehq-viewof-ratio-0c8521f7"));
-      if (name === "desenho") return new Inspector(document.querySelector("#observablehq-desenho-0c8521f7"));
-      if (name === "viewof n") return new Inspector(document.querySelector("#observablehq-viewof-n-0c8521f7"));
-      if (name === "viewof variation") return new Inspector(document.querySelector("#observablehq-viewof-variation-0c8521f7"));
+      if (name === "viewof ratio") return new Inspector(document.querySelector("#ratio"));
+      if (name === "desenho") return new Inspector(document.querySelector("#desenho"));
+      if (name === "viewof n") return new Inspector(document.querySelector("#n"));
+      if (name === "viewof variation") return new Inspector(document.querySelector("#variation"));
       return ["draw"].includes(name);
     });
 
