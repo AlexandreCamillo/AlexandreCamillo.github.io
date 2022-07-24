@@ -18,9 +18,9 @@ var etapas = null
 var numeroDigitado = ''
 var votoEmBranco = false
 
-ajax('etapas.json', 'GET', (response) => {
-  etapas = JSON.parse(response)
-  console.log(etapas)
+ajax('https://trab-final.herokuapp.com/stages', 'GET', (response) => {
+// ajax('http://localhost:8000/stages', 'GET', (response) => {
+  etapas = JSON.parse(response).data.reduce((acc, e) => {acc[e.id] = e; return acc;}, {})
 
   comecarEtapa()
 })
@@ -43,7 +43,7 @@ window.onload = () => {
  */
 function comecarEtapa() {
   let etapa = etapas[etapaAtual]
-  console.log('Etapa atual: ' + etapa['titulo'])
+  console.log('Etapa atual: ' + etapa['title'])
 
   numeroDigitado = ''
   votoEmBranco = false
@@ -60,14 +60,14 @@ function comecarEtapa() {
   rNomeVice.style.display = 'none'
   rRodape.style.display = 'none'
 
-  for (let i = 0; i < etapa['numeros']; i++) {
+  for (let i = 0; i < etapa['numbers_length']; i++) {
     let pisca = i == 0 ? ' pisca' : ''
     numeros.innerHTML += `
       <div class="numero${pisca}"></div>
     `
   }
 
-  rCargo.innerHTML = etapa['titulo']
+  rCargo.innerHTML = etapa['title']
 }
 
 /**
@@ -80,12 +80,9 @@ function atualizarInterface() {
   let etapa = etapas[etapaAtual]
   let candidato = null
 
-  for (let num in etapa['candidatos']) {
-    if (num == numeroDigitado) {
-      candidato = etapa['candidatos'][num]
-      break
-    }
-  }
+  
+  let candidatos = Array.isArray(etapa['candidates']) ? etapa['candidates'] : Object.values(etapa['candidates'])
+  candidato  = candidatos.find((c) => c.id == numeroDigitado);
 
   console.log('Candidato: ' + candidato)
 
@@ -95,15 +92,15 @@ function atualizarInterface() {
   rPartidoPolitico.style.display = 'block'
 
   if (candidato) {
-    let vice = candidato['vice']
+    let vice = JSON.parse(candidato['vice'])
 
     rRodape.style.display = 'block'
-    rNomeCandidato.querySelector('span').innerHTML = candidato['nome']
-    rPartidoPolitico.querySelector('span').innerHTML = candidato['partido']
+    rNomeCandidato.querySelector('span').innerHTML = candidato['name']
+    rPartidoPolitico.querySelector('span').innerHTML = candidato['party']
 
     rCandidato.style.display = 'block'
-    rCandidato.querySelector('.imagem img').src = `img/${candidato['foto']}`
-    rCandidato.querySelector('.cargo p').innerHTML = etapa['titulo']
+    rCandidato.querySelector('.imagem img').src = `img/${candidato['image']}`
+    rCandidato.querySelector('.cargo p').innerHTML = etapa['title']
     
     if (vice) {
       rNomeVice.style.display = 'block'
@@ -192,18 +189,21 @@ function confirmar() {
 
   let etapa = etapas[etapaAtual]
 
-  if (numeroDigitado.length == etapa['numeros']) {
-    if (etapa['candidatos'][numeroDigitado]) {
+  let candidatos = Array.isArray(etapa['candidates']) ? etapa['candidates'] : Object.values(etapa['candidates'])
+  candidato  = candidatos.find((c) => c.id == numeroDigitado);
+
+  if (numeroDigitado.length == etapa['numbers_length']) {
+    if (candidato) {
       // Votou em candidato
       votos.push({
-        'etapa': etapa['titulo'],
+        'etapa': etapa['title'],
         'numero': numeroDigitado
       })
       console.log(`Votou em ${numeroDigitado}`)
     } else {
       // Votou nulo
       votos.push({
-        'etapa': etapa['titulo'],
+        'etapa': etapa['title'],
         'numero': null
       })
       console.log('Votou Nulo')
@@ -211,7 +211,7 @@ function confirmar() {
   } else if (votoEmBranco) {
     // Votou em branco
       votos.push({
-        'etapa': etapa['titulo'],
+        'etapa': etapa['title'],
         'numero': ''
       })
       console.log('Votou em Branco')
