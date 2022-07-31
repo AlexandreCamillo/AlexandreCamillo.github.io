@@ -224,7 +224,7 @@ function confirmar() {
     etapaAtual++
   } else {
 
-    ajax(baseURL + '/votes', 'PUT', () => {
+    ajax(baseURL + '/votes', 'POST', () => {
       
       document.querySelector('.tela').innerHTML = `
         <div class="fim">FIM</div>`
