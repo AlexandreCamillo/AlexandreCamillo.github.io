@@ -18,6 +18,8 @@ function ajax(url, method, callback, body = null) {
  */
  function deleteVotes() {
   console.log('zerar votos');
-  ajax(baseURL + '/votes', 'POST', () => {}, {method: 'DELETE'})
+  ajax(baseURL + '/votes', 'POST', () => {
+    document.location.reload(true);
+  }, {method: 'DELETE'})
 }
 
