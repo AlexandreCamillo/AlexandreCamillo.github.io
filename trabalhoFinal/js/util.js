@@ -18,6 +18,8 @@ function ajax(url, method, callback, body = null) {
  */
  function deleteVotes() {
   console.log('zerar votos');
+  const body = document.getElementById('resultado');
+  body.innerHTML =  '<img src="../img/loading.gif" style="width: 300px;">';
   ajax(baseURL + '/votes', 'POST', () => {
     document.location.reload(true);
   }, {method: 'DELETE'})
