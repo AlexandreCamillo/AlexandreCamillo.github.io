@@ -7,7 +7,7 @@ function ajax(url, method, callback, body = null) {
   request.open(method, url, true);
   request.onreadystatechange = () => {
     if (request.readyState === 4 && request.status == "200") {
-        callback(JSON.parse(request.responseText));
+      callback(JSON.parse(request.responseText));
     }
   };
   request.send(JSON.stringify(body));
@@ -18,7 +18,8 @@ function ajax(url, method, callback, body = null) {
  */
  function deleteVotes() {
   console.log('zerar votos');
-  ajax(baseURL + '/votes', 'DELETE', () => {
+  ajax(baseURL + '/votes', 'POST', () => {
     window.location = window.location.host + 'resume/'
-  })
+  }, {method: 'DELETE'})
 }
+
