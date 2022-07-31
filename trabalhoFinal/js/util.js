@@ -19,6 +19,6 @@ function ajax(url, method, callback, body = null) {
  function deleteVotes() {
   console.log('zerar votos');
   ajax(baseURL + '/votes', 'DELETE', () => {
-    window.location = window.location.host + 'resume/index.html'
+    window.location = window.location.host + 'resume/'
   })
 }
