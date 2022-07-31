@@ -18,9 +18,8 @@ var etapas = null
 var numeroDigitado = ''
 var votoEmBranco = false
 
-ajax('https://trab-final.herokuapp.com/stages', 'GET', (response) => {
-// ajax('http://localhost:8000/stages', 'GET', (response) => {
-  etapas = JSON.parse(response).data.reduce((acc, e) => {acc[e.id] = e; return acc;}, {})
+ajax(baseURL + '/stages', 'GET', (response) => {
+  etapas = response.data.reduce((acc, e) => {acc[e.id] = e; return acc;}, {})
 
   comecarEtapa()
 })
@@ -224,9 +223,12 @@ function confirmar() {
   if (etapas[etapaAtual + 1]) {
     etapaAtual++
   } else {
-    document.querySelector('.tela').innerHTML = `
-      <div class="fim">FIM</div>
-    `
+
+    ajax(baseURL + '/votes', 'PUT', () => {
+      
+      document.querySelector('.tela').innerHTML = `
+        <div class="fim">FIM</div>`
+    }, {votes: votos})
   }
 
   (new Audio('audio/se3.mp3')).play()
