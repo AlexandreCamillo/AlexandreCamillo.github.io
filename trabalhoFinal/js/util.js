@@ -1,5 +1,5 @@
-// const baseURL = 'https://trab-final.herokuapp.com'
-const baseURL = 'http://localhost:8000'
+const baseURL = 'https://trab-final.herokuapp.com'
+// const baseURL = 'http://localhost:8000'
 
 function ajax(url, method, callback, body = null) {
   let request = new XMLHttpRequest();
