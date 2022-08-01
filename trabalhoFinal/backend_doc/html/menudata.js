@@ -51,4 +51,6 @@ var menudata={children:[
 {text:"p",url:"functions_func.html#index_p"},
 {text:"r",url:"functions_func.html#index_r"},
 {text:"s",url:"functions_func.html#index_s"},
-{text:"u",url:"functions_func.html#index_u"}]}]}]}]}
+{text:"u",url:"functions_func.html#index_u"}]}]}]},
+{text:"Ficheiros",url:"files.html",children:[
+{text:"Lista de ficheiros",url:"files.html"}]}]}

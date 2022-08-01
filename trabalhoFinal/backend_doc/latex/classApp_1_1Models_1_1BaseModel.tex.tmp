@@ -20,6 +20,10 @@ static \mbox{\hyperlink{classApp_1_1Models_1_1BaseModel_ad13e63cc1077ccb6e51afe7
 \doxysubsection{Descrição detalhada}
 Classe base para classes com responsabilidade de persistência de dados no banco de dados 
 
+Definido na linha 7 do ficheiro Base\+Model.\+php.
+
+
+
 \doxysubsection{Documentação dos métodos}
 \mbox{\Hypertarget{classApp_1_1Models_1_1BaseModel_ad13e63cc1077ccb6e51afe71c4cc2958}\label{classApp_1_1Models_1_1BaseModel_ad13e63cc1077ccb6e51afe71c4cc2958}} 
 \index{App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}!all@{all}}
@@ -27,7 +31,11 @@ Classe base para classes com responsabilidade de persistência de dados no banco
 \doxysubsubsection{\texorpdfstring{all()}{all()}}
 {\footnotesize\ttfamily static App\textbackslash{}\+Models\textbackslash{}\+Base\+Model\+::all (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Método para retornar os dados de todas as instâncias da tabela da classe que usa essa classe base \mbox{\Hypertarget{classApp_1_1Models_1_1BaseModel_a37d2d8ca6ca63588d588361aa1bb120d}\label{classApp_1_1Models_1_1BaseModel_a37d2d8ca6ca63588d588361aa1bb120d}} 
+Método para retornar os dados de todas as instâncias da tabela da classe que usa essa classe base 
+
+Definido na linha 50 do ficheiro Base\+Model.\+php.
+
+\mbox{\Hypertarget{classApp_1_1Models_1_1BaseModel_a37d2d8ca6ca63588d588361aa1bb120d}\label{classApp_1_1Models_1_1BaseModel_a37d2d8ca6ca63588d588361aa1bb120d}} 
 \index{App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}!find@{find}}
 \index{find@{find}!App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}}
 \doxysubsubsection{\texorpdfstring{find()}{find()}}
@@ -38,19 +46,31 @@ Método para retornar os dados de uma instância da tabela da classe que usa ess
 {\em id} & Identificador da instância que se deseja encontrar \\
 \hline
 \end{DoxyParams}
+
+
+Definido na linha 32 do ficheiro Base\+Model.\+php.
+
 \mbox{\Hypertarget{classApp_1_1Models_1_1BaseModel_adcab8e7f848d2333ee36c3472cef0efc}\label{classApp_1_1Models_1_1BaseModel_adcab8e7f848d2333ee36c3472cef0efc}} 
 \index{App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}!get\_table@{get\_table}}
 \index{get\_table@{get\_table}!App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}}
 \doxysubsubsection{\texorpdfstring{get\_table()}{get\_table()}}
 {\footnotesize\ttfamily static App\textbackslash{}\+Models\textbackslash{}\+Base\+Model\+::get\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Método para retornar a tabela para a qual a model que usa esta classe base foi criada para intermediar \mbox{\Hypertarget{classApp_1_1Models_1_1BaseModel_a5bb5a70ec4fcfa0c1ac653bf2043b703}\label{classApp_1_1Models_1_1BaseModel_a5bb5a70ec4fcfa0c1ac653bf2043b703}} 
+Método para retornar a tabela para a qual a model que usa esta classe base foi criada para intermediar 
+
+Definido na linha 12 do ficheiro Base\+Model.\+php.
+
+\mbox{\Hypertarget{classApp_1_1Models_1_1BaseModel_a5bb5a70ec4fcfa0c1ac653bf2043b703}\label{classApp_1_1Models_1_1BaseModel_a5bb5a70ec4fcfa0c1ac653bf2043b703}} 
 \index{App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}!pdo\_connection@{pdo\_connection}}
 \index{pdo\_connection@{pdo\_connection}!App\textbackslash{}Models\textbackslash{}BaseModel@{App\textbackslash{}Models\textbackslash{}BaseModel}}
 \doxysubsubsection{\texorpdfstring{pdo\_connection()}{pdo\_connection()}}
 {\footnotesize\ttfamily static App\textbackslash{}\+Models\textbackslash{}\+Base\+Model\+::pdo\+\_\+connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 Método para criar a conexão com o banco de dados baseado nas variáveis de ambiente 
+
+Definido na linha 23 do ficheiro Base\+Model.\+php.
+
+
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
 \item 

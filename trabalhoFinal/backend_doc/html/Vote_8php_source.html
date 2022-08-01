@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>API Urna Eletrônica: Código-Fonte de App/Models/Vote.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Urna Eletrônica
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b1617d756d2224e91d37255e84e89ba2.html">App</a></li><li class="navelem"><a class="el" href="dir_bfb280d7f294dbb71002d6a1d1d9eed4.html">Models</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Vote.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;  <span class="keyword">namespace </span>App\Models;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classApp_1_1Models_1_1Vote.html">    8</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classApp_1_1Models_1_1Vote.html">Vote</a> <span class="keyword">extends</span> <a class="code" href="classApp_1_1Models_1_1BaseModel.html">BaseModel</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> $table = <span class="stringliteral">&#39;votes&#39;</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classApp_1_1Models_1_1Vote.html#aa0b3b1dc6cb97127d86bf5dc2a3e19a6">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code" href="classApp_1_1Models_1_1Vote.html#aa0b3b1dc6cb97127d86bf5dc2a3e19a6">insert</a>($stage_id, $candidate_id)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        $connPdo = <a class="code" href="classApp_1_1Models_1_1BaseModel.html#a5bb5a70ec4fcfa0c1ac653bf2043b703">self::pdo_connection</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        $sql = <span class="stringliteral">&#39;INSERT INTO &#39;</span>.self::$table.<span class="stringliteral">&#39; (stage_id, candidate_id) &#39;</span>.<span class="stringliteral">&#39;VALUES (:s, :c)&#39;</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        $stmt = $connPdo-&gt;prepare($sql);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        $stmt-&gt;bindValue(<span class="stringliteral">&#39;:s&#39;</span>, $stage_id);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        $stmt-&gt;bindValue(<span class="stringliteral">&#39;:c&#39;</span>, $candidate_id);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        $stmt-&gt;execute();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">if</span> ($stmt-&gt;rowCount() &gt; 0) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&#39;Voto contabilizado com sucesso!&#39;</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">throw</span> new \Exception(<span class="stringliteral">&quot;Falha ao contabilizar voto!&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classApp_1_1Models_1_1Vote.html#af2ea72369dd3e5b4f023d7d15f27fd94">   38</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code" href="classApp_1_1Models_1_1Vote.html#af2ea72369dd3e5b4f023d7d15f27fd94">delete_all</a>()</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        $connPdo = <a class="code" href="classApp_1_1Models_1_1BaseModel.html#a5bb5a70ec4fcfa0c1ac653bf2043b703">self::pdo_connection</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        $sql = <span class="stringliteral">&#39;DELETE FROM &#39;</span>.self::$table;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        $stmt = $connPdo-&gt;prepare($sql);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        $stmt-&gt;execute();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  } </div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassApp_1_1Models_1_1Vote_html"><div class="ttname"><a href="classApp_1_1Models_1_1Vote.html">App\Models\Vote</a></div><div class="ttdef"><b>Definition:</b> <a href="Vote_8php_source.html#l00008">Vote.php:8</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Vote_html_af2ea72369dd3e5b4f023d7d15f27fd94"><div class="ttname"><a href="classApp_1_1Models_1_1Vote.html#af2ea72369dd3e5b4f023d7d15f27fd94">App\Models\Vote\delete_all</a></div><div class="ttdeci">static delete_all()</div><div class="ttdef"><b>Definition:</b> <a href="Vote_8php_source.html#l00038">Vote.php:38</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1BaseModel_html"><div class="ttname"><a href="classApp_1_1Models_1_1BaseModel.html">App\Models\BaseModel</a></div><div class="ttdef"><b>Definition:</b> <a href="BaseModel_8php_source.html#l00007">BaseModel.php:7</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1BaseModel_html_a5bb5a70ec4fcfa0c1ac653bf2043b703"><div class="ttname"><a href="classApp_1_1Models_1_1BaseModel.html#a5bb5a70ec4fcfa0c1ac653bf2043b703">App\Models\BaseModel\pdo_connection</a></div><div class="ttdeci">static pdo_connection()</div><div class="ttdef"><b>Definition:</b> <a href="BaseModel_8php_source.html#l00023">BaseModel.php:23</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Vote_html_aa0b3b1dc6cb97127d86bf5dc2a3e19a6"><div class="ttname"><a href="classApp_1_1Models_1_1Vote.html#aa0b3b1dc6cb97127d86bf5dc2a3e19a6">App\Models\Vote\insert</a></div><div class="ttdeci">static insert($stage_id, $candidate_id)</div><div class="ttdef"><b>Definition:</b> <a href="Vote_8php_source.html#l00016">Vote.php:16</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

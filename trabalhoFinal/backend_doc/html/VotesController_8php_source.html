@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>API Urna Eletrônica: Código-Fonte de App/Controllers/VotesController.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Urna Eletrônica
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b1617d756d2224e91d37255e84e89ba2.html">App</a></li><li class="navelem"><a class="el" href="dir_2d1f325e31c4dbf7fbf9bdc1a5eb440d.html">Controllers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">VotesController.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    <span class="keyword">namespace </span>App\Controllers;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    use <a class="code" href="classApp_1_1Models_1_1Vote.html">App\Models\Vote</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    use <a class="code" href="classApp_1_1Models_1_1Stage.html">App\Models\Stage</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    use <a class="code" href="classApp_1_1Models_1_1Candidate.html">App\Models\Candidate</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classApp_1_1Controllers_1_1VotesController.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classApp_1_1Controllers_1_1VotesController.html">VotesController</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classApp_1_1Controllers_1_1VotesController.html#a40baabf1b62dd8f57362149c4e4b9c57">   15</a></span>&#160;      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <span class="keyword">get</span>() {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        $stages = <a class="code" href="classApp_1_1Models_1_1Stage.html#aaa4dd162c0bcf64dfcd76f4143b3b0d2">Stage::all_with_candidates</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        $votes = <a class="code" href="classApp_1_1Models_1_1BaseModel.html#ad13e63cc1077ccb6e51afe71c4cc2958">Vote::all</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        $response = [];</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">foreach</span> ($stages as $stage) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;          $response[$stage[<span class="stringliteral">&#39;title&#39;</span>]] = [];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;          $candidates = $stage[<span class="stringliteral">&#39;candidates&#39;</span>];</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;          $candidates_votes = [];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;          <span class="keywordflow">foreach</span> ($candidates as $candidate) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            $candidate_votes = $votes ? array_filter($votes, <span class="keyword">function</span> ($vote) use($candidate) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;              <span class="keywordflow">return</span> $vote[<span class="stringliteral">&#39;candidate_id&#39;</span>] == $candidate[<span class="stringliteral">&#39;id&#39;</span>];</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }): [];</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            $candidates_votes[$candidate[<span class="stringliteral">&#39;id&#39;</span>].<span class="stringliteral">&#39; - &#39;</span>.$candidate[<span class="stringliteral">&#39;name&#39;</span>]] = count($candidate_votes);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;          }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;          $whites = $votes ? array_filter($votes, <span class="keyword">function</span> ($vote) use($stage) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">return</span> $vote[<span class="stringliteral">&#39;candidate_id&#39;</span>] === <span class="stringliteral">&#39;&#39;</span> and $vote[<span class="stringliteral">&#39;stage_id&#39;</span>] == $stage[<span class="stringliteral">&#39;id&#39;</span>];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;          }): [];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;          $candidates_votes[<span class="stringliteral">&#39;brancos&#39;</span>] = count($whites);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;          $nulls = $votes ? array_filter($votes, <span class="keyword">function</span> ($vote) use($stage) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">return</span> $vote[<span class="stringliteral">&#39;candidate_id&#39;</span>] === <span class="keyword">null</span> and $vote[<span class="stringliteral">&#39;stage_id&#39;</span>] == $stage[<span class="stringliteral">&#39;id&#39;</span>];</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;          }): [];</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;          $candidates_votes[<span class="stringliteral">&#39;nulos&#39;</span>] = count($nulls);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;          $response[$stage[<span class="stringliteral">&#39;title&#39;</span>]] = $candidates_votes;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> $response;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classApp_1_1Controllers_1_1VotesController.html#a8d2bf1ec1d37bc675279084c67431561">   55</a></span>&#160;      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code" href="classApp_1_1Controllers_1_1VotesController.html#a8d2bf1ec1d37bc675279084c67431561">post</a>($body){</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        $votes = $body[<span class="stringliteral">&#39;votes&#39;</span>];</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        $validated_votes = [];</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">foreach</span> ($votes as $vote) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;          $validated_vote[<span class="stringliteral">&#39;stage&#39;</span>] = <a class="code" href="classApp_1_1Models_1_1Stage.html#a08af2b59dce58576130d008419c6c8fe">Stage::find_by_title</a>($vote[<span class="stringliteral">&#39;etapa&#39;</span>]);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;          <span class="keywordflow">if</span>($vote[<span class="stringliteral">&#39;numero&#39;</span>] !== <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            $validated_vote[<span class="stringliteral">&#39;candidate&#39;</span>] = <a class="code" href="classApp_1_1Models_1_1BaseModel.html#a37d2d8ca6ca63588d588361aa1bb120d">Candidate::find</a>($vote[<span class="stringliteral">&#39;numero&#39;</span>]) ?? [<span class="stringliteral">&#39;id&#39;</span> =&gt;  <span class="stringliteral">&#39;&#39;</span>];</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            $validated_vote[<span class="stringliteral">&#39;candidate&#39;</span>] = [<span class="stringliteral">&#39;id&#39;</span> =&gt; <span class="keyword">null</span>];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;          }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          $validated_votes[] = $validated_vote;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">foreach</span> ($validated_votes as $vote) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;          <a class="code" href="classApp_1_1Models_1_1Vote.html#aa0b3b1dc6cb97127d86bf5dc2a3e19a6">Vote::insert</a>($vote[<span class="stringliteral">&#39;stage&#39;</span>][<span class="stringliteral">&#39;id&#39;</span>], $vote[<span class="stringliteral">&#39;candidate&#39;</span>][<span class="stringliteral">&#39;id&#39;</span>]);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;Voto contabilizado com sucesso!&#39;</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classApp_1_1Controllers_1_1VotesController.html#ae7303718dca7aec37028c88f139c8cf3">   83</a></span>&#160;      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <span class="keyword">delete</span>() {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classApp_1_1Models_1_1Vote.html#af2ea72369dd3e5b4f023d7d15f27fd94">Vote::delete_all</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;Votos deletados com sucesso!&#39;</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassApp_1_1Models_1_1Vote_html"><div class="ttname"><a href="classApp_1_1Models_1_1Vote.html">App\Models\Vote</a></div><div class="ttdef"><b>Definition:</b> <a href="Vote_8php_source.html#l00008">Vote.php:8</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Vote_html_af2ea72369dd3e5b4f023d7d15f27fd94"><div class="ttname"><a href="classApp_1_1Models_1_1Vote.html#af2ea72369dd3e5b4f023d7d15f27fd94">App\Models\Vote\delete_all</a></div><div class="ttdeci">static delete_all()</div><div class="ttdef"><b>Definition:</b> <a href="Vote_8php_source.html#l00038">Vote.php:38</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Candidate_html"><div class="ttname"><a href="classApp_1_1Models_1_1Candidate.html">App\Models\Candidate</a></div><div class="ttdef"><b>Definition:</b> <a href="Candidate_8php_source.html#l00008">Candidate.php:8</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Stage_html_a08af2b59dce58576130d008419c6c8fe"><div class="ttname"><a href="classApp_1_1Models_1_1Stage.html#a08af2b59dce58576130d008419c6c8fe">App\Models\Stage\find_by_title</a></div><div class="ttdeci">static find_by_title(string $title)</div><div class="ttdef"><b>Definition:</b> <a href="Stage_8php_source.html#l00033">Stage.php:33</a></div></div>
+<div class="ttc" id="aclassApp_1_1Controllers_1_1VotesController_html"><div class="ttname"><a href="classApp_1_1Controllers_1_1VotesController.html">App\Controllers\VotesController</a></div><div class="ttdef"><b>Definition:</b> <a href="VotesController_8php_source.html#l00011">VotesController.php:11</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Vote_html_aa0b3b1dc6cb97127d86bf5dc2a3e19a6"><div class="ttname"><a href="classApp_1_1Models_1_1Vote.html#aa0b3b1dc6cb97127d86bf5dc2a3e19a6">App\Models\Vote\insert</a></div><div class="ttdeci">static insert($stage_id, $candidate_id)</div><div class="ttdef"><b>Definition:</b> <a href="Vote_8php_source.html#l00016">Vote.php:16</a></div></div>
+<div class="ttc" id="aclassApp_1_1Controllers_1_1VotesController_html_a8d2bf1ec1d37bc675279084c67431561"><div class="ttname"><a href="classApp_1_1Controllers_1_1VotesController.html#a8d2bf1ec1d37bc675279084c67431561">App\Controllers\VotesController\post</a></div><div class="ttdeci">static post($body)</div><div class="ttdef"><b>Definition:</b> <a href="VotesController_8php_source.html#l00055">VotesController.php:55</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1BaseModel_html_ad13e63cc1077ccb6e51afe71c4cc2958"><div class="ttname"><a href="classApp_1_1Models_1_1BaseModel.html#ad13e63cc1077ccb6e51afe71c4cc2958">App\Models\BaseModel\all</a></div><div class="ttdeci">static all()</div><div class="ttdef"><b>Definition:</b> <a href="BaseModel_8php_source.html#l00050">BaseModel.php:50</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Stage_html_aaa4dd162c0bcf64dfcd76f4143b3b0d2"><div class="ttname"><a href="classApp_1_1Models_1_1Stage.html#aaa4dd162c0bcf64dfcd76f4143b3b0d2">App\Models\Stage\all_with_candidates</a></div><div class="ttdeci">static all_with_candidates()</div><div class="ttdef"><b>Definition:</b> <a href="Stage_8php_source.html#l00016">Stage.php:16</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1BaseModel_html_a37d2d8ca6ca63588d588361aa1bb120d"><div class="ttname"><a href="classApp_1_1Models_1_1BaseModel.html#a37d2d8ca6ca63588d588361aa1bb120d">App\Models\BaseModel\find</a></div><div class="ttdeci">static find($id)</div><div class="ttdef"><b>Definition:</b> <a href="BaseModel_8php_source.html#l00032">BaseModel.php:32</a></div></div>
+<div class="ttc" id="aclassApp_1_1Models_1_1Stage_html"><div class="ttname"><a href="classApp_1_1Models_1_1Stage.html">App\Models\Stage</a></div><div class="ttdef"><b>Definition:</b> <a href="Stage_8php_source.html#l00010">Stage.php:10</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
